@@ -1,8 +1,8 @@
-sky# :bird: Pterodactyl-Theme-Autoinstaller
+# :bird: pterodactyl-auto-installer
 
 
 
-## Auto Install Thema Pterodactyl
+## Auto Install Thema Pterodactyl Sanka Vollerei
 
 ## Command Install :
 
