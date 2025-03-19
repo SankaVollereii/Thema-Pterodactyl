@@ -23,6 +23,7 @@ bash <(curl -s https://raw.githubusercontent.com/SankaVollereii/Thema-Pterodacty
 
 | Operating System | Version | Supported          |
 | ---------------- | ------- | ------------------ |
+| Ubuntu           | 24.04   | :white_check_mark: |
 | Ubuntu           | 20.04   | :white_check_mark: |
 |                  | 22.04   | :white_check_mark: |
 | Debian           | 10      | :white_check_mark: |
