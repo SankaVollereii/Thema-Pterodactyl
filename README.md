@@ -15,9 +15,10 @@ bash <(curl -s https://raw.githubusercontent.com/SankaVollereii/Thema-Pterodacty
 - Install Tema Stellar
 - Install Tema Billing
 - Install Tema Enigma
+- Install Tema Plana
 - Uninstall Tema
 
- (Kode Token : sanka)
+ (Kode Token : s*****)
 
 ## System Support :
 
