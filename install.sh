@@ -87,8 +87,9 @@ install_theme() {
     echo "1. stellar"
     echo "2. billing"
     echo "3. enigma"
+    echo "4. plana"
     echo "x. kembali"
-    echo -e "masukan pilihan (1/2/3/x) :"
+    echo -e "masukan pilihan (1/2/3/4/x) :"
     read -r SELECT_THEME
     case "$SELECT_THEME" in
       1)
@@ -101,6 +102,10 @@ install_theme() {
         ;;
       3)
         THEME_URL=$(echo -e "https://github.com/SankaVollereii/Thema-Pterodactyl/raw/main/enigma.zip")
+        break
+        ;; 
+      4)
+        THEME_URL=$(echo -e "https://github.com/SankaVollereii/Thema-Pterodactyl/raw/main/plana.zip")
         break
         ;; 
       x)
@@ -183,14 +188,14 @@ elif [ "$SELECT_THEME" -eq 3 ]; then
     # Menanyakan informasi kepada pengguna untuk tema Enigma
     echo -e "${YELLOW}Masukkan link wa (https://wa.me...) : ${NC}"
     read LINK_WA
-#    echo -e "${YELLOW}Masukkan link group (https://.....) : ${NC}"
-#    read LINK_GROUP
+    echo -e "${YELLOW}Masukkan link group (https://.....) : ${NC}"
+    read LINK_GROUP
     echo -e "${YELLOW}Masukkan link channel (https://...) : ${NC}"
     read LINK_CHNL
 
     # Mengganti placeholder dengan nilai dari pengguna
     sudo sed -i "s|LINK_WA|$LINK_WA|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
-#    sudo sed -i "s|LINK_GROUP|$LINK_GROUP|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
+    sudo sed -i "s|LINK_GROUP|$LINK_GROUP|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
     sudo sed -i "s|LINK_CHNL|$LINK_CHNL|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
     
 
@@ -208,13 +213,52 @@ elif [ "$SELECT_THEME" -eq 3 ]; then
 
   echo -e "                                                       "
   echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "${GREEN}[+]                  INSTALL SUCCESS                [+]${NC}"
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "                                                       "
+  sleep 2
+  clear
+  return
+
+elif [ "$SELECT_THEME" -eq 4 ]; then
+  echo -e "                                                       "
+  echo -e "${BLUE}[+] =============================================== [+]${NC}"
+  echo -e "${BLUE}[+]                  INSTALLASI THEMA               [+]${NC}"
+  echo -e "${BLUE}[+] =============================================== [+]${NC}"
+  echo -e "                                                                   "
+
+    # Menanyakan informasi kepada pengguna untuk tema Enigma
+    echo -e "${YELLOW}Masukkan link wa (https://wa.me...) : ${NC}"
+    read LINK_WA
+    echo -e "${YELLOW}Masukkan link channel (https://...) : ${NC}"
+    read LINK_CHNL
+
+    # Mengganti placeholder dengan nilai dari pengguna
+    sudo sed -i "s|LINK_WA|$LINK_WA|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
+    sudo sed -i "s|LINK_CHNL|$LINK_CHNL|g" /root/pterodactyl/resources/scripts/components/dashboard/DashboardContainer.tsx
+    
+
+  sudo cp -rfT /root/pterodactyl /var/www/pterodactyl
+  curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  sudo apt install -y nodejs
+  sudo npm i -g yarn
+  cd /var/www/pterodactyl
+  yarn add react-feather
+  php artisan migrate
+  yarn build:production
+  php artisan view:clear
+  sudo rm /root/plana.zip
+  sudo rm -rf /root/pterodactyl
+
+  echo -e "                                                       "
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
   echo -e "${GREEN}[+]                   INSTALL SUCCESS               [+]${NC}"
   echo -e "${GREEN}[+] =============================================== [+]${NC}"
   echo -e ""
   sleep 5
 else
   echo ""
-  echo "Pilihan tidak valid. silahkan pilih 1/2/3."
+  echo "Pilihan tidak valid. silahkan pilih 1/2/3/4."
 fi
 }
 
