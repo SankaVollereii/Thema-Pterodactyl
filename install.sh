@@ -241,7 +241,6 @@ elif [ "$SELECT_THEME" -eq 4 ]; then
   sudo cp -rfT /root/pterodactyl /var/www/pterodactyl
   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
   sudo apt install -y nodejs
-  sudo npm install --save-dev @types/lodash
   sudo npm i -g yarn
   cd /var/www/pterodactyl
   yarn add react-feather
